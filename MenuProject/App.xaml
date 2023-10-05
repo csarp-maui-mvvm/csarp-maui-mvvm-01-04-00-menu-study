@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MenuProject"
              xmlns:page="clr-namespace:MenuProject.Pages"
+             xmlns:datamanagmentpage="clr-namespace:MenuProject.Pages.DataManagement"
              x:Class="MenuProject.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -15,18 +16,35 @@
 
     <Application.MainPage>
         <Shell>
-            <TabBar x:Name="ApplicationTabs">
-                <Tab Title="Home" Icon="home.svg">
-                    <ShellContent ContentTemplate="{DataTemplate page:HomePage}"/>
-                </Tab>
-                <Tab Title="Beállítások" Icon="settings.svg">
-                    <ShellContent ContentTemplate="{DataTemplate page:SettingsPage}"/>
-                </Tab>
-                <Tab Title="Rólunk" Icon="home.svg">
-                    <ShellContent ContentTemplate="{DataTemplate page:AboutPage }"/>
-                </Tab>
-
-            </TabBar>
+            <FlyoutItem Title="Home" Icon="home.svg">
+                <ShellContent Title="Home" Icon="home.svg"
+            ContentTemplate="{DataTemplate page:HomePage}">
+                </ShellContent>
+            </FlyoutItem>
+            <FlyoutItem Title="Adatkezelés">
+                <ShellContent Title="Diákok" Icon="student.svg"
+            ContentTemplate="{DataTemplate datamanagmentpage:StudentPage}">
+                </ShellContent>
+                <ShellContent Title="Tanárok" Icon="teacher.svg"
+            ContentTemplate="{DataTemplate datamanagmentpage:TeacherPage}">
+                </ShellContent>
+                <ShellContent Title="Szülők" Icon="home.svg"
+            ContentTemplate="{DataTemplate datamanagmentpage:ParentPage}">
+                </ShellContent>
+            </FlyoutItem>
+            <FlyoutItem Title="Beállítások" Icon="settings.svg">
+                <ShellContent Title="Beállítások" Icon="settings.svg"
+            ContentTemplate="{DataTemplate page:SettingsPage}">
+                </ShellContent>
+                <ShellContent Title="Nyelvi beállítások" Icon="home.svg"
+            ContentTemplate="{DataTemplate page:LanguageSettingsPage}">
+                </ShellContent>
+            </FlyoutItem>
+            <FlyoutItem Title="Rólunk" Icon="home.svg">
+                <ShellContent Title="Rólunk" Icon="home.svg"
+            ContentTemplate="{DataTemplate page:AboutPage}">
+                </ShellContent>
+            </FlyoutItem>
         </Shell>
     </Application.MainPage>
 
