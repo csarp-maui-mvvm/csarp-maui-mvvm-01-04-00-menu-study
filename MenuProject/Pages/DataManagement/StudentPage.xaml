@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodle="clr-namespace:StudentProject.ViewModels"
+             xmlns:model="clr-namespace:StudentProject.Models"
              x:Class="MenuProject.Pages.DataManagement.StudentPage"
              Title="Diák adatok">
-    <VerticalStackLayout>
-        <Label 
-            Text="Diák adatok"
-            FontSize="Large"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ContentPage.BindingContext>
+        <viewmodle:StudentViewModel/>
+    </ContentPage.BindingContext>
+    <CollectionView BackgroundColor="Transparent" ItemsSource="{Binding Students}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:Student">
+                <Frame Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" WidthRequest="64" Grid.RowSpan="4" Source="student.png"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding HungarianFullName}" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding HungarianLongBirthsDay}" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding SchoolYearAndClass}" />
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding EducationLevel}" />
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>
